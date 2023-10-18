@@ -7,7 +7,7 @@
     "build": "tsup",
     "build:fix": "esno scripts/postbuild.ts",
     "dev": "tsup --watch src",
-    "publish": "publish",
+    "publish": "npm publish",
     "release": "bumpp && npm publish"
   },
   "license": "MIT",
@@ -46,7 +46,6 @@
   "files": [
     "dist"
   ],
-
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
