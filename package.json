@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-lib-emit-assets",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vite 插件：提取 lib 构建模式下引用到的资源文件，取代 base64 内联形式",
   "scripts": {
     "build": "tsup",

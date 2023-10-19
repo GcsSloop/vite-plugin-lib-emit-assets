@@ -143,9 +143,9 @@ function resolveFullId(importer: string, source: string): string {
 function emitAsset(context: PluginContext, id: string, name: string, content: Buffer): string {
   const [pureId, resourceQuery] = id.split('?');
   const url = interpolateName({ resourcePath: pureId, resourceQuery } as LoaderContext, name, { content });
-  const assetPath = path.posix.join(viteConfig.build.assetsDir, url);
+  const assetPath = path.join(viteConfig.build.assetsDir, url);
   const filename = assetPath.replace(`?${resourceQuery}`, '');
-  const fullname = path.posix.join(viteConfig.build.outDir, assetPath);
+  const fullname = path.join(viteConfig.build.outDir, assetPath);
 
   context.emitFile({
     fileName: filename,
@@ -245,9 +245,9 @@ async function writeBundle(_: any, outputBundle: { [x: string]: any }) {
   const sourceMapAfterStyleProcessing = replaceBase64WithAssetPath(initialSourceMap);
   const finalSourceMap = adjustResourceAddress(sourceMapAfterStyleProcessing);
 
-  const outputDir = path.posix.resolve(viteConfig.build.outDir);
+  const outputDir = path.resolve(viteConfig.build.outDir);
   for (const name of Object.keys(initialSourceMap).filter((name) => initialSourceMap[name] !== finalSourceMap[name])) {
-    const outputPath = path.posix.join(outputDir, name);
+    const outputPath = path.join(outputDir, name);
     await promisify(fs.writeFile)(outputPath, finalSourceMap[name]);
   }
 }
@@ -293,7 +293,7 @@ function adjustResourceAddress(bundleSourceMap: Record<string, string>): Record<
     let updated = updatedSourceMap[name];
     const fileDir = path.dirname(name);
     for (const asset of assetsExtracted) {
-      const relativeAsset = path.posix.relative(fileDir, asset);
+      const relativeAsset = path.relative(fileDir, asset);
       const originalAsset = `./${asset}`;
       if (asset !== relativeAsset && updated.includes(originalAsset)) {
         updated = updated.replaceAll(originalAsset, relativeAsset);
