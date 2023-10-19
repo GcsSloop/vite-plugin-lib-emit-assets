@@ -1,14 +1,13 @@
 {
   "name": "vite-plugin-lib-emit-assets",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vite 插件：提取 lib 构建模式下引用到的资源文件，取代 base64 内联形式",
   "scripts": {
     "build": "tsup",
     "build:fix": "esno scripts/postbuild.ts",
     "dev": "tsup --watch src",
-    "publish": "npm publish",
-    "release": "bumpp && npm publish"
+    "pub": "tsup && npm publish"
   },
   "license": "MIT",
   "homepage": "https://github.com/GcsSloop/vite-plugin-lib-emit-assets",
