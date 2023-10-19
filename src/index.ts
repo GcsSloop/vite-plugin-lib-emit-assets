@@ -143,7 +143,7 @@ function resolveFullId(importer: string, source: string): string {
 function emitAsset(context: PluginContext, id: string, name: string, content: Buffer): string {
   const [pureId, resourceQuery] = id.split('?');
   const url = interpolateName({ resourcePath: pureId, resourceQuery } as LoaderContext, name, { content });
-  const assetPath = path.join(viteConfig.build.assetsDir, url);
+  const assetPath = path.posix.join(viteConfig.build.assetsDir, url);
   const filename = assetPath.replace(`?${resourceQuery}`, '');
   const fullname = path.join(viteConfig.build.outDir, assetPath);
 
